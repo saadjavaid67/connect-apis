@@ -1,6 +1,7 @@
 const body = document.querySelector('body');
 const button = document.querySelector('button')
 const word = document.createElement('h1');
+const translation = document.createElement('p');
 
 const randomWord = () => {
     fetch('https://random-word-api.herokuapp.com/word?number=1').then(response => {
@@ -30,6 +31,8 @@ const randomDefinition = (w) => {
             }
         })
         .then(response => {
+            translation.textContent = response.translated['3.translated text'];
+            body.appendChild(translation);
             console.log(response.translated['3.translated text']);
         })
         .catch(err => {
